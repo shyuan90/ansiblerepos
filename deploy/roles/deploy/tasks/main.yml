@@ -1,0 +1,9 @@
+---
+- name: Stop app service 
+  supervisorctl: name=app state=stopped
+#- name: Backup the project files
+#  shell: chdir=/home/tomcat/app/webapps/ tar zcf {{backup_path}}/{{pjnum}}.tar.gz .
+- name: Rsync the upload files
+  shell: chdir=/tmp/ rsync -avz --progress --delete --password-file=/tmp/rsync.pwd {{rsync_user}}@{{git_ip}}::{{rsync_pro}}/{{project}} . 
+- name: Start app service
+  supervisorctl: name=app state=started

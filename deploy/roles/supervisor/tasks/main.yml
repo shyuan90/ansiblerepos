@@ -1,0 +1,9 @@
+---
+- name: To copy the config file to /etc
+  template: src=supervisord.conf dest=/etc/ owner={{tomcat_owner}} group={{tomcat_group}} mode=0755 
+- name: Add supervisor service
+  template: src=supervisor-redhat.sh dest=/etc/init.d/supervisord mode=0755
+  sudo: yes
+  when: ansible_os_family == "RedHat"
+#- name: Restart supervisor service
+#  service: name=supervisord state=restarted

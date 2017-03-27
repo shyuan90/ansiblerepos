@@ -1,0 +1,6 @@
+---
+rsync_user: test
+git_ip: 172.16.110.80
+rsync_pro: test
+project: user
+backup_path: /tmp/

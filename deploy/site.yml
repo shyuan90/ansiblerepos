@@ -1,0 +1,11 @@
+---
+- hosts: '{{hostgroup}}'
+  user: root
+  gather_facts: true
+  vars:
+     tomcat_owner: tomcat
+     tomcat_group: tomcat
+  roles:
+   - supervisor
+   - deploy
+  
